@@ -1,0 +1,45 @@
+<section class="bg-black text-white">
+  <div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="text-center">
+      <h1>Tic Tac Toe</h1>
+      <div class="d-flex justify-content-center align-items-center gap-5 mt-3 mb-2">
+        <h3 class="text-danger">
+          X : {{xWin()}}
+        </h3>
+        <h3 class="borderColor">
+          O : {{oWin()}}
+        </h3>
+      </div>
+      <div class="board">
+        @for (item of board(); track $index) {
+          <div [ngClass] = "{
+            'border-5 border-primary': item === 'O',
+            'border-5 border-danger': item === 'X',
+            'rounded-circle': item,
+          }" class="square d-flex justify-content-center align-items-center fs-2" (click)="makeMove($index)">
+            <h4 [ngStyle]="{
+              'color': item === 'X'? 'red' : '#09c'
+              }"
+            >
+              {{item}}
+            </h4>
+          </div>
+        }
+      </div>
+      <div class="my-3">
+        @if(winner()){
+          <h3 [ngStyle]="{
+            'color': winner() === 'X'? 'red' : '#09c'
+            }" class="animate__animated animate__tada d-flex justify-content-center align-items-center gap-3">
+            {{winner()}} : Winner <img src="./assets/images/1103-confetti.gif" class="winImage">
+          </h3>
+        } @else if (!winner() && drawGame()) {
+          <h3 class="animate__animated animate__shakeY">
+            Draw <img src="../../../assets/images/1.jpg" class="opsImg w-25" alt="">
+          </h3>
+        }
+      </div>
+      <button class="btn btn-outline-primary" (click)="resetGame()">Reset</button>
+    </div>
+  </div>
+</section>
