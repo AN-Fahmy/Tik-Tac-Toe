@@ -16,7 +16,7 @@
             'border-5 border-primary': item === 'O',
             'border-5 border-danger': item === 'X',
             'rounded-circle': item,
-          }" class="square d-flex justify-content-center align-items-center fs-2" (click)="makeMove($index)">
+          }" class="square d-flex justify-content-center align-items-center fs-2 rounded-1" (click)="makeMove($index)">
             <h4 [ngStyle]="{
               'color': item === 'X'? 'red' : '#09c'
               }"
